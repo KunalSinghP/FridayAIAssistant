@@ -153,10 +153,11 @@ if __name__ == "__main__":
             speak(f"Sir, the time is {strTime}")
 
         elif 'email to kunal' in query:
+	#You can make a dictionary or edit this command to send email to multiple number of people. You can also store the data in files.
             try:
                 speak("What should I say?")
                 content = takeCommand()
-                to = "kunalsingh.ks384@gmail.com"
+                to = "kunalsingh.ks384@gmail.com" #Specify the email account to which you want to send the email.
                 sendEmail(to, content)
                 speak("Email has been sent!")
             except Exception as e:
