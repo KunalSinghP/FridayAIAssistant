@@ -191,3 +191,7 @@ if __name__ == "__main__":
 
         elif 'thank you' in query:
             speak("My pleasure sir.")
+	
+	else:
+	    print("No such command available in this program right now. Try saying Friday what can you do")
+	
