@@ -9,7 +9,7 @@ on your system successfully.'''
 #Wikipedia Throws error sometimes, I couldn't figure it out yet, maybe there is some server problem or something.
 #To use wikipedia, Give command like-The term you want to search + wikipedia: For eg- Salman Khan Wikipedia.
 
-#To-do: Add a News Narrator Program
+#Completed-22/09/2020 ------------>#To-do: Add a News Narrator Program
 #To-do: Add some small games
 #To-do: Add a calculator for simple calculations for now, later maybe we will add it for complex problems.
 #To-do: To search for terms on google which Friday couldn't recognize.(Just Like Siri)
@@ -26,6 +26,10 @@ import webbrowser
 import os
 import smtplib
 import random
+import json
+import time
+import requests
+#If you get a module error, install using pip install command
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
@@ -94,8 +98,42 @@ def tasks():
     5.Tell the time
     6.Send Email
     7.Play music
-    8.Shutdown or Restart... much more to come''')
+    8.Shutdown or Restart
+    9.Akhbar padhkar sunao or say Live news ... much more to come''')
 
+def news():
+    speak("Welcome To The News Narrator Program.")
+    print('*Instructions* Please don\'t give input until the bot completes its statement.')
+    input()
+    url="https://newsapi.org/v2/top-headlines?country=in&apiKey='-generate your own api key, go to newsapi.org-'"
+    news=requests.get(url).text
+    news=json.loads(news)
+    articles=news["articles"]
+
+    for article in articles:
+        print(article['title'])
+        speak(article['title'])
+        speak("Press 1 to have a short description of the news. Press 2 to hear the next news. Press any other key to quit.")
+        x=input()
+        time.sleep(1)
+        if x=='1':
+            print(article['description'])
+            speak(article['description'])
+            speak("Press 1 to hear the next news. Press any other key to stop listening")
+            f=input()
+            if f=='1':
+                continue
+            else:
+                speak("Hope You Liked This Program Made By Kunal")
+                #speak("And Sorry For My Accent. Actually I Was A PT Teacher In Delhi Police Public School")
+                break
+        elif x=='2':
+            continue
+        else:
+            speak("Hope You Liked This Program Made By Kunal")
+            # speak("And Sorry For My Accent. Actually I Was A PT Teacher In Delhi Police Public School")
+            break
+	
 if __name__ == "__main__":
     wishMe()
     while True:
@@ -191,3 +229,6 @@ if __name__ == "__main__":
 
         elif 'thank you' in query:
             speak("My pleasure sir.")
+	
+	elif 'akhbar padhkar sunao' in query or 'live news' in query:
+	    news()
