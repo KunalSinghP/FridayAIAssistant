@@ -104,7 +104,7 @@ def tasks():
 def news():
     speak("Welcome To The News Narrator Program.")
     print('*Instructions* Please don\'t give input until the bot completes its statement.')
-    input()
+    time.sleep(1)
     url="https://newsapi.org/v2/top-headlines?country=in&apiKey='-generate your own api key, go to newsapi.org-'"
     news=requests.get(url).text
     news=json.loads(news)
