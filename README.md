@@ -14,7 +14,7 @@ on your system successfully.'''
 #To use wikipedia, Give command like-The term you want to search + wikipedia: For eg- Salman Khan Wikipedia.
 
 
-#To-do: Add a News Narrator Program
+*Completed*-------->#To-do: Add a News Narrator Program
 
 #To-do: Add some small games
 
