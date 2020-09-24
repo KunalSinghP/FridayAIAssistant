@@ -232,3 +232,7 @@ if __name__ == "__main__":
 	
 	elif 'akhbar padhkar sunao' in query or 'live news' in query:
 	    news()
+	
+	elif 'bye' in query or 'exit' in query or 'quit' in query:
+	    speak("Bye Bye. See you soon.")
+	    exit()
