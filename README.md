@@ -14,15 +14,16 @@ on your system successfully.'''
 #To use wikipedia, Give command like-The term you want to search + wikipedia: For eg- Salman Khan Wikipedia.
 
 
-*Completed*-------->#To-do: Add a News Narrator Program
+#Completed-22/09/2020 ------------> #To-do: Add a News Narrator Program
 
-#To-do: Add some small games
+#Completed-22/09/2020 ------------> #To-do: Add some small games
 
 #To-do: Add a calculator for simple calculations for now, later maybe we will add it for complex problems.
 
 #To-do: To search for terms on google which Friday couldn't recognize.(Just Like Siri)
 
-
 #These new features would be added soon.
+
+#To-do: Add Multiplayer Game [21-10-2020]
 
 #Suggest some more good improvements in this program. I would love to commit the changes that makes this program more fun and useful.
