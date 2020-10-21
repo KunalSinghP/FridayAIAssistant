@@ -10,7 +10,7 @@ on your system successfully.'''
 #To use wikipedia, Give command like-The term you want to search + wikipedia: For eg- Salman Khan Wikipedia.
 
 #Completed-22/09/2020 ------------>#To-do: Add a News Narrator Program
-#To-do: Add some small games
+#Completed-21/10/2020 ------------>#To-do: Add some small games
 #To-do: Add a calculator for simple calculations for now, later maybe we will add it for complex problems.
 #To-do: To search for terms on google which Friday couldn't recognize.(Just Like Siri)
 #These new features would be added soon.
@@ -98,8 +98,9 @@ def tasks():
     5.Tell the time
     6.Send Email
     7.Play music
-    8.Shutdown or Restart
-    9.Akhbar padhkar sunao or say Live news ... much more to come''')
+    8.Play Games
+    9.Akhbar padhkar sunao or say Live news
+    10.Shutdown or Restart... much more to come''')
 
 def news():
     speak("Welcome To The News Narrator Program.")
@@ -133,7 +134,144 @@ def news():
             speak("Hope You Liked This Program Made By Kunal")
             # speak("And Sorry For My Accent. Actually I Was A PT Teacher In Delhi Police Public School")
             break
-	
+
+def games(user_choice):
+    if user_choice==1:
+        # This is a Guess the Number game.
+        op='Yes' or 'yes' or 'Y' or 'y'
+        while op=='Yes' or 'yes' or 'Y' or 'y':
+        
+            guessesTaken = 0
+
+            print('Hello! What is your name?')
+            myName = str(input())
+
+            number = random.randint(1, 100)
+            print('Well, ' + myName + ', I am thinking of a number between 1 and 100.')
+            print('Lets see, ' + myName + ', if you can guess it or not. You have 6 guesses.')
+            print("Good Luck")
+            for guessesTaken in range(1,7):
+                print('Take a guess.') 
+                guess = input()
+                guess = int(guess)
+
+                if guess < number:
+                    print('Your guess is too low.')
+
+                if guess > number:
+                    print('Your guess is too high.')
+
+                if guess == number:
+                    break
+
+            if guess == number:
+                guessesTaken = str(guessesTaken)
+                print('Good job, ' + myName + '! You guessed my number in ' +
+                    guessesTaken + ' guesses!')
+
+            if guess != number:
+                number = str(number)
+                print('Nope, '+myName+'. The number I was thinking of was ' + number + '.')
+            op=input("Do You Wish to Continue?Yes or No : ")
+        else:
+            print("BBye")
+    elif user_choice==2:
+        you=0
+        comp=0
+
+        print("Stone Papers Scissors!")
+        print("Total 10 rounds")
+        r=["s","p","x"]
+        print("""s for stone
+        p for paper
+        x for scissors""")
+        i=10
+        while i>0:
+            inp=input("Enter:")
+            c = random.choice(r)
+            while inp not in r:
+                inp = input("Enter:")
+            else:
+                if inp=="s":
+                    if c=="p":
+                        print("You:s \t ")
+                        time.sleep(2)
+                        print("Computer:p")
+                        time.sleep(2)
+                        comp=comp+1
+                        print(f"Comp:{comp} \t You:{you}")
+                    elif c=="x":
+                        print("You:s \t ")
+                        time.sleep(2)
+                        print("Computer:",c)
+                        time.sleep(2)
+                        you = you + 1
+                        print(f"Comp:{comp} \t You:{you}")
+                    else:
+                        print("You:s \t ")
+                        time.sleep(2)
+                        print("Computer:", c)
+                        time.sleep(2)
+                        print(f"Comp:{comp} \t You:{you}")
+                elif inp=="p":
+                    if c=="x":
+                        print("You:p \t ")
+                        time.sleep(2)
+                        print("Computer:x")
+                        time.sleep(2)
+                        comp=comp+1
+                        print(f"Comp:{comp} \t You:{you}")
+                    elif c=="s":
+                        print("You:p \t ")
+                        time.sleep(2)
+                        print("Computer:",c)
+                        time.sleep(2)
+                        you = you + 1
+                        print(f"Comp:{comp} \t You:{you}")
+                    else:
+                        print("You:p \t ")
+                        time.sleep(2)
+                        print("Computer:", c)
+                        time.sleep(2)
+                        print(f"Comp:{comp} \t You:{you}")
+                elif inp=="x":
+                    if c=="s":
+                        print("You:x \t ")
+                        time.sleep(2)
+                        print("Computer:s")
+                        time.sleep(2)
+                        comp=comp+1
+                        print(f"Comp:{comp} \t You:{you}")
+                    elif c=="p":
+                        print("You:x \t ")
+                        time.sleep(2)
+                        print("Computer:",c)
+                        time.sleep(2)
+                        you = you + 1
+                        print(f"Comp:{comp} \t You:{you}")
+                    else:
+                        print("You:x \t ")
+                        time.sleep(2)
+                        print("Computer:", c)
+                        time.sleep(2)
+                        print(f"Comp:{comp} \t You:{you}")
+
+            i-=1
+            print(i," rounds left")
+        time.sleep(1)
+        print("Game Over")
+        time.sleep(1)
+        print("Final Scores:-")
+
+        print("You:",you)
+        print("Comp:",comp)
+        time.sleep(1)
+        if you>comp:
+            print("You Win!")
+        elif you<comp:
+            print("Computer Wins!")
+        else:
+            print("It's a Tie")
 if __name__ == "__main__":
     wishMe()
     while True:
@@ -232,6 +370,24 @@ if __name__ == "__main__":
 	
 	elif 'akhbar padhkar sunao' in query or 'live news' in query:
 	    news()
+	
+	elif 'play game' in query:
+            speak('Would you like to play a multiplayer or a single player game.')
+            response=takeCommand()
+
+            if 'single' in response:
+                speak("You can play two games at this moment.")
+                print('1.Guess The Number')
+                print('2.Stone Paper Scissors')
+                choice = int(input("Enter 1 or 2: "))
+                if choice==1 or choice==2:
+                    games(choice)
+                
+                else:
+                    speak('Invalid Input')
+                    
+            elif 'multiplayer' in response:
+                pass #Adding Multiplayer Games Soon
 	
 	elif 'bye' in query or 'exit' in query or 'quit' in query:
 	    speak("Bye Bye. See you soon.")
